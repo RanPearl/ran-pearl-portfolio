@@ -1,174 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ran Pearl P. Diocena — Computer Science student and OJT applicant.">
-  <meta name="theme-color" content="#f7dce7">
-  <title>Ran Pearl P. Diocena | OJT Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>RanOS 96 — Ran Pearl's Portfolio</title>
+  <meta name="description" content="Ran Pearl's personal portfolio, designed as a playful retro desktop operating system called RanOS 96. Explore projects, skills, certifications, and more." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="RanOS 96 — Ran Pearl's Portfolio" />
+  <meta property="og:description" content="A retro late-1990s OS-style portfolio featuring projects, skills, certifications, and adorable desktop cats." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-preview.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="grain" aria-hidden="true"></div>
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="Ran Pearl home">
-      <span class="brand-mark">RP<span>✳</span></span>
-      <span>RAN PEARL<span class="brand-sub">PORTFOLIO / 2026</span></span>
-    </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-    <nav class="nav-links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#certifications">Certificates</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle color theme">☾</button>
-  </header>
 
-  <main>
-    <section class="hero section-shell" id="home">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="status-dot"></span> OPEN TO OJT OPPORTUNITIES <span class="eyebrow-year">2026—2027</span></div>
-        <p class="hero-kicker">HELLO, WORLD! I'M</p>
-        <h1>Ran Pearl<br><span class="name-highlight">Diocena.</span></h1>
-        <div class="hero-role"><span class="role-prefix">I'M A</span> <span id="typedRole">Computer Science Student</span><span class="typing-cursor">|</span></div>
-        <p class="hero-intro">A fourth-year Computer Science student who enjoys learning how technology works and turning ideas into useful solutions. Currently looking for an opportunity to learn, contribute, and grow through OJT.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#projects">Explore my work <span>↘</span></a>
-          <a class="btn btn-outline" href="assets/resume.pdf" download="Ran_Pearl_Diocena_OJT_Resume.pdf">Download resume <span>↓</span></a>
+  <!-- ═══════════════════════════════════
+       BOOT SCREEN
+  ═══════════════════════════════════ -->
+  <div id="boot-screen" role="dialog" aria-label="RanOS 96 Boot Screen" aria-modal="true">
+    <div class="boot-content">
+      <div class="boot-logo">
+        <div class="boot-logo-icon" aria-hidden="true">
+          <svg width="80" height="80" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="6" width="44" height="30" rx="2" fill="#C0C0C0" stroke="#808080"/>
+            <rect x="5" y="9" width="38" height="24" fill="#000080"/>
+            <rect x="20" y="36" width="8" height="5" fill="#A0A0A0"/>
+            <rect x="13" y="41" width="22" height="3" fill="#808080"/>
+            <text x="24" y="25" text-anchor="middle" font-family="monospace" font-size="9" fill="#00FF41">RanOS</text>
+            <text x="24" y="31" text-anchor="middle" font-family="monospace" font-size="7" fill="#808080">96</text>
+          </svg>
         </div>
-        <div class="hero-meta">
-          <span><i>⌖</i> Iloilo City, Philippines</span>
-          <span><i>✉</i> rdiocena@usa.edu.ph</span>
+        <h1 class="boot-title">RanOS 96</h1>
+        <p class="boot-subtitle">Personal Edition · Copyright © 2024 Ran Pearl</p>
+      </div>
+      <div class="boot-progress-wrap">
+        <div class="boot-progress-container"
+             role="progressbar"
+             aria-valuemin="0"
+             aria-valuemax="100"
+             aria-valuenow="0"
+             id="boot-progress-bar">
+          <div class="boot-progress-fill" id="boot-progress-fill"></div>
         </div>
       </div>
-      <div class="hero-art">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="sticker sticker-top">4TH YEAR<br>BSCS STUDENT</div>
-        <div class="profile-card">
-          <div class="profile-top"><span>RAN'S DESKTOP</span><span>● ● ●</span></div>
-          <div class="profile-screen">
-            <div class="pixel-cat" aria-label="Decorative pixel cat">
-              <span class="cat-ear left"></span><span class="cat-ear right"></span>
-              <span class="cat-face"><i class="eye eye-left"></i><i class="eye eye-right"></i><i class="nose"></i><i class="whisker w1"></i><i class="whisker w2"></i></span>
-            </div>
-            <div class="screen-caption">currently learning<br><strong>something new...</strong></div>
-            <div class="screen-icons"><span>✿</span><span>♡</span><span>⌘</span></div>
-          </div>
-          <div class="profile-bottom"><span>CREATIVE MODE: ON</span><span class="tiny-heart">♥</span></div>
-        </div>
-        <div class="sticker sticker-bottom">MADE WITH<br>♥ & CURIOSITY</div>
-        <span class="sparkle sparkle-a">✳</span><span class="sparkle sparkle-b">✧</span><span class="sparkle sparkle-c">✦</span>
-        <span class="paw paw-a">🐾</span><span class="paw paw-b">🐾</span>
-      </div>
-      <a class="scroll-cue" href="#about"><span>SCROLL TO EXPLORE</span><b>↓</b></a>
-    </section>
+      <p class="boot-status" id="boot-status" aria-live="polite">Starting RanOS 96…</p>
+      <button class="boot-skip" id="boot-skip">Skip ▶</button>
+    </div>
+  </div>
 
-    <section class="section-shell section-block" id="about">
-      <div class="section-label"><span>01 / ABOUT ME</span><i></i><span>THE PERSON BEHIND THE SCREEN</span></div>
-      <div class="about-grid">
-        <div><h2>Curious mind.<br><em>Growing skills.</em></h2></div>
-        <div class="about-copy">
-          <p>I'm a fourth-year BS Computer Science student at the University of San Agustin. I have hands-on training in Python programming, SQL data analysis, networking fundamentals, cybersecurity awareness, and cloud and AI concepts.</p>
-          <p>I hold six industry certifications from Cisco Networking Academy, DataCamp, and Simplilearn. I'm seeking an On-the-Job Training placement in a computer science or IT-related role where I can apply what I have learned, gain real-world experience, and contribute to a team.</p>
-          <div class="quick-facts">
-            <div><strong>06</strong><span>Certifications</span></div>
-            <div><strong>03</strong><span>Academic projects</span></div>
-            <div><strong>2027</strong><span>Expected graduation</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="note-strip"><span>✿ A LITTLE NOTE</span><p>I believe that every project is a chance to learn something new. I'm still growing, and I'm excited to keep improving.</p><span class="note-cat">=^･ω･^=</span></div>
-    </section>
+  <!-- ═══════════════════════════════════
+       DESKTOP
+  ═══════════════════════════════════ -->
+  <div id="desktop" aria-label="RanOS 96 Desktop">
 
-    <section class="section-shell section-block" id="skills">
-      <div class="section-label"><span>02 / TECHNICAL SKILLS</span><i></i><span>TOOLS IN MY TOOLBOX</span></div>
-      <h2 class="section-title">Things I can <em>work with.</em></h2>
-      <div class="skills-grid">
-        <article class="skill-card"><div class="skill-icon">⌘</div><h3>Programming</h3><p>Python</p><div class="skill-bar"><span style="width:70%"></span></div><small>Building programming fundamentals</small></article>
-        <article class="skill-card"><div class="skill-icon">▤</div><h3>Databases & Data</h3><p>SQL · Data cleaning · Table joins · Data analysis</p><div class="skill-bar"><span style="width:72%"></span></div><small>Working with and understanding data</small></article>
-        <article class="skill-card"><div class="skill-icon">⌁</div><h3>Networking</h3><p>IP addressing · Routing · Network protocols</p><div class="skill-bar"><span style="width:65%"></span></div><small>Understanding network communication</small></article>
-        <article class="skill-card"><div class="skill-icon">♢</div><h3>Security</h3><p>Cybersecurity fundamentals · Safe data practices</p><div class="skill-bar"><span style="width:60%"></span></div><small>Learning secure computing practices</small></article>
-        <article class="skill-card"><div class="skill-icon">☁</div><h3>Emerging Tech</h3><p>Cloud computing · Modern AI concepts</p><div class="skill-bar"><span style="width:58%"></span></div><small>Exploring current technologies</small></article>
-        <article class="skill-card"><div class="skill-icon">⌘</div><h3>Tools & Documentation</h3><p>Git · GitHub · VS Code · Technical writing</p><div class="skill-bar"><span style="width:72%"></span></div><small>Organizing work and documenting ideas</small></article>
-      </div>
-      <p class="skill-footnote">Skill bars are visual indicators of areas I have studied and practiced, not formal proficiency scores.</p>
-    </section>
+    <!-- Desktop Icons -->
+    <main id="icon-grid" aria-label="Desktop icons" role="list"></main>
 
-    <section class="section-shell section-block" id="projects">
-      <div class="section-label"><span>03 / SELECTED PROJECTS</span><i></i><span>LEARNING BY BUILDING</span></div>
-      <div class="title-row"><h2 class="section-title">A few things I've <em>worked on.</em></h2>
-        <div class="project-filters" role="group" aria-label="Filter projects">
-          <button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="research">Research</button><button class="filter-btn" data-filter="development">Development</button>
-        </div>
-      </div>
-      <div class="projects-grid">
-        <article class="project-card featured" data-category="research">
-          <div class="project-visual visual-fsl"><span class="visual-tag">ONGOING THESIS · 2026—PRESENT</span><div class="fsl-visual-text">SIGN<br><b>TO SPEECH</b></div><div class="visual-hand">✋</div><span class="visual-code">MEDIAPIPE / BiLSTM / TFLITE</span></div>
-          <div class="project-info"><div class="project-type">01 / RESEARCH PROJECT</div><h3>Offline Mobile Application for Real-Time Filipino Sign Language (FSL) Translation</h3><p>Working with a team of five to develop an offline Android app that translates 130 Filipino Sign Language gestures into text and speech in real time. I serve as a researcher and documentation member, supporting the research and written thesis proposal.</p><div class="tag-list"><span>MediaPipe Holistic</span><span>BiLSTM</span><span>TensorFlow Lite</span><span>Android</span></div><button class="details-toggle" aria-expanded="false">More project details <span>＋</span></button><div class="project-extra"><p>Research covers sign-gesture recognition using MediaPipe Holistic and a BiLSTM model. System quality is planned to be evaluated using ISO/IEC 25010 and the Technology Acceptance Model.</p></div></div>
-        </article>
-        <article class="project-card" data-category="development">
-          <div class="project-visual visual-ip"><span class="visual-tag">CISCO DEVASC · 2026</span><div class="ip-visual"><span>IPv4</span><b>↔</b><span>IPv6</span></div><span class="visual-code">REST API / TEAM OF 3</span></div>
-          <div class="project-info"><div class="project-type">02 / DEVELOPMENT ACTIVITY</div><h3>IPv4/IPv6 Address Retrieval App</h3><p>Worked in a three-member team to build an application that retrieves a user's IPv4 and IPv6 addresses from a REST API.</p><div class="tag-list"><span>REST API</span><span>Networking</span><span>Teamwork</span></div></div>
-        </article>
-        <article class="project-card" data-category="development">
-          <div class="project-visual visual-tutor"><span class="visual-tag">ACADEMIC PROJECT · 2025—2026</span><div class="tutor-visual"><span>PEER</span><b>↗</b><span>LEARNING</span></div><span class="visual-code">COLLABORATION / STUDENT SUPPORT</span></div>
-          <div class="project-info"><div class="project-type">03 / ACADEMIC GROUP PROJECT</div><h3>Smart Peer Tutoring System</h3><p>Served on the documentation team and helped develop a system that connects students with peers for academic assistance and collaborative learning.</p><div class="tag-list"><span>Documentation</span><span>System Development</span><span>Education</span></div><button class="details-toggle" aria-expanded="false">More project details <span>＋</span></button><div class="project-extra"><p>The project focused on improving access to peer-based tutoring and supporting better learning outcomes while applying basic software development concepts.</p></div></div>
-        </article>
-      </div>
-    </section>
+    <!-- Windows Container -->
+    <div id="windows-container" aria-label="Application windows"></div>
 
-    <section class="section-shell section-block" id="certifications">
-      <div class="section-label"><span>04 / CERTIFICATIONS</span><i></i><span>KEEPING MYSELF LEARNING</span></div>
-      <h2 class="section-title">Learning, one course <em>at a time.</em></h2>
-      <div class="cert-grid">
-        <article class="cert-card"><span class="cert-number">01</span><div class="cert-logo">cisco<span>●</span></div><h3>Python Essentials 1</h3><p>Cisco Networking Academy</p><small>Python fundamentals, data types, control structures, functions, and modules.</small></article>
-        <article class="cert-card"><span class="cert-number">02</span><div class="cert-logo datacamp">DataCamp</div><h3>SQL Associate</h3><p>DataCamp</p><small>Practical SQL exam covering data cleaning, table joins, and customer service data analysis.</small></article>
-        <article class="cert-card"><span class="cert-number">03</span><div class="cert-logo">cisco<span>●</span></div><h3>Networking Basics</h3><p>Cisco Networking Academy</p><small>IP addressing, routing, network protocols, and network services.</small></article>
-        <article class="cert-card"><span class="cert-number">04</span><div class="cert-logo">cisco<span>●</span></div><h3>Introduction to Cybersecurity</h3><p>Cisco Networking Academy</p><small>Common cyber threats, online safety, and protecting accounts and data.</small></article>
-        <article class="cert-card"><span class="cert-number">05</span><div class="cert-logo simplify">SIMPLILEARN</div><h3>Introduction to Cloud Computing</h3><p>Simplilearn</p><small>Core concepts and foundations of cloud computing.</small></article>
-        <article class="cert-card"><span class="cert-number">06</span><div class="cert-logo">cisco<span>●</span></div><h3>Introduction to Modern AI</h3><p>Cisco Networking Academy</p><small>Foundations and introductory concepts of modern artificial intelligence.</small></article>
-      </div>
-      <p class="cert-note">Certificate images can be added later if you want each card to open a certificate preview.</p>
-    </section>
+    <!-- Cats -->
+    <div id="cats-container" aria-hidden="true"></div>
 
-    <section class="section-shell section-block" id="education">
-      <div class="section-label"><span>05 / EDUCATION & HONORS</span><i></i><span>MY ACADEMIC JOURNEY</span></div>
-      <div class="education-grid">
-        <div><h2 class="section-title">Where I've <em>learned.</em></h2>
-          <div class="timeline">
-            <div class="timeline-item"><span class="timeline-date">2023 — EXPECTED 2027</span><h3>Bachelor of Science in Computer Science</h3><p>University of San Agustin · BSCS 4-A</p><span class="timeline-status">4th Year Student</span></div>
-            <div class="timeline-item"><span class="timeline-date">SENIOR HIGH SCHOOL</span><h3>STEM Strand</h3><p>Iloilo City National High School</p><span class="timeline-status">With Honors / With High Honors</span></div>
-          </div>
-        </div>
-        <div class="honors-panel"><div class="honors-heading">✿ ACADEMIC HONORS</div><div class="honor-row"><b>Grade 11</b><span>With Honors — 1st and 2nd Semester</span></div><div class="honor-row"><b>Grade 12</b><span>With Honors — 1st Semester<br>With High Honors — 2nd Semester</span></div><div class="honor-row"><b>College</b><span>3rd Year Honor Roll — 2nd Semester</span></div><div class="honor-stamp">PROGRESS<br>OVER<br>PERFECTION</div></div>
-      </div>
-    </section>
+    <!-- ─── TASKBAR ─── -->
+    <footer id="taskbar" role="toolbar" aria-label="Taskbar">
 
-    <section class="section-shell resume-callout" id="resume">
-      <div class="resume-doodle">📄</div><div><span class="resume-label">06 / MY RESUME</span><h2>Want the details?</h2><p>Download my resume for a complete overview of my education, skills, certifications, and projects.</p></div>
-      <a class="btn btn-dark" href="assets/resume.pdf" download="Ran_Pearl_Diocena_OJT_Resume.pdf">Download resume <span>↓</span></a>
-    </section>
+      <!-- Start button -->
+      <button class="start-btn"
+              id="start-btn"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="start-menu">
+        <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="6" width="44" height="30" rx="2" fill="#C0C0C0" stroke="#808080"/>
+          <rect x="5" y="9" width="38" height="24" fill="#000080"/>
+          <rect x="20" y="36" width="8" height="5" fill="#A0A0A0"/>
+          <rect x="13" y="41" width="22" height="3" fill="#808080"/>
+        </svg>
+        <span>Start</span>
+      </button>
 
-    <section class="section-shell section-block contact-section" id="contact">
-      <div class="section-label"><span>07 / CONTACT</span><i></i><span>LET'S CONNECT</span></div>
-      <div class="contact-grid"><div><h2>Have an opportunity?<br><em>Let's talk.</em></h2><p>I'm open to OJT opportunities and learning experiences in computer science and IT-related fields.</p><div class="contact-cat">ฅ^•ﻌ•^ฅ <span>hope to hear from you!</span></div></div>
-        <div class="contact-links">
-          <a href="mailto:rdiocena@usa.edu.ph" class="contact-link"><span class="contact-icon">✉</span><span><small>EMAIL</small><b>rdiocena@usa.edu.ph</b></span><span class="contact-arrow">↗</span></a>
-          <a href="tel:+639487372788" class="contact-link"><span class="contact-icon">☎</span><span><small>PHONE</small><b>0948 737 2788</b></span><span class="contact-arrow">↗</span></a>
-          <a href="https://github.com/RanPearl" target="_blank" rel="noopener noreferrer" class="contact-link"><span class="contact-icon">⌘</span><span><small>GITHUB</small><b>github.com/RanPearl</b></span><span class="contact-arrow">↗</span></a>
-          <a href="https://ranpearl.github.io/ran-pearl-portfolio/" target="_blank" rel="noopener noreferrer" class="contact-link"><span class="contact-icon">↗</span><span><small>PORTFOLIO</small><b>ranpearl.github.io</b></span><span class="contact-arrow">↗</span></a>
+      <!-- Start Menu (shown above taskbar) -->
+      <nav id="start-menu"
+           role="menu"
+           aria-label="Start Menu"
+           hidden></nav>
+
+      <!-- Separator -->
+      <div class="taskbar-sep" aria-hidden="true"></div>
+
+      <!-- Open windows list -->
+      <div id="taskbar-windows" role="list" aria-label="Open windows" class="taskbar-windows"></div>
+
+      <!-- Right cluster: mute + clock -->
+      <div class="taskbar-right">
+        <button id="mute-btn"
+                class="taskbar-tray-btn"
+                aria-label="Sound muted — click to unmute"
+                aria-pressed="true"
+                title="Toggle sound">🔇</button>
+        <div class="taskbar-clock" id="taskbar-clock" role="timer" aria-label="Current time">
+          <span id="clock-time">12:00 AM</span>
         </div>
       </div>
-    </section>
-  </main>
-  <footer class="site-footer"><a class="footer-brand" href="#home">RP✳</a><span>© 2026 Ran Pearl P. Diocena</span><span>DESIGNED WITH ♥ IN ILOILO</span><a href="#home" class="back-top">BACK TO TOP ↑</a></footer>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="script.js"></script>
+
+    </footer><!-- /taskbar -->
+  </div><!-- /desktop -->
+
+  <!-- ═══════════════════════════════════
+       NO-JS FALLBACK  (SEO + accessibility)
+  ═══════════════════════════════════ -->
+  <noscript>
+    <div class="noscript-fallback">
+      <h1>Ran Pearl — Portfolio</h1>
+      <p><em>Enable JavaScript for the full RanOS 96 interactive experience.</em></p>
+
+      <nav aria-label="Sections">
+        <a href="#ns-about">About</a> |
+        <a href="#ns-certs">Certifications</a> |
+        <a href="#ns-skills">Skills</a> |
+        <a href="#ns-projects">Projects</a> |
+        <a href="#ns-edu">Education &amp; Honors</a> |
+        <a href="#ns-contact">Contact</a>
+      </nav>
+
+      <section id="ns-about">
+        <h2>About Me</h2>
+        <p>Hi! I'm Ran Pearl — a software engineer passionate about building thoughtful, well-crafted digital experiences. [Update in js/main.js → CONTENT.about.bio]</p>
+      </section>
+
+      <section id="ns-certs">
+        <h2>Certifications</h2>
+        <ul>
+          <li>AWS Certified Solutions Architect — Associate
+            [<a href="#" target="_blank" rel="noopener noreferrer">View Certificate</a>]
+          </li>
+          <li>Google Cloud Professional Cloud Architect
+            [<a href="#" target="_blank" rel="noopener noreferrer">View Certificate</a>]
+          </li>
+          <li>Microsoft Azure Fundamentals (AZ-900)
+            [<a href="#" target="_blank" rel="noopener noreferrer">View Certificate</a>]
+          </li>
+          <li>Certified Kubernetes Administrator (CKA)
+            [<a href="#" target="_blank" rel="noopener noreferrer">View Certificate</a>]
+          </li>
+          <li>Tableau Desktop Specialist
+            [<a href="#" target="_blank" rel="noopener noreferrer">View Certificate</a>]
+          </li>
+          <li>TensorFlow Developer Certificate
+            [<a href="#" target="_blank" rel="noopener noreferrer">View Certificate</a>]
+          </li>
+        </ul>
+      </section>
+
+      <section id="ns-skills">
+        <h2>Skills</h2>
+        <p><strong>Languages:</strong> Python, JavaScript, TypeScript, SQL, Java</p>
+        <p><strong>Frameworks:</strong> React, Node.js, FastAPI, Spring Boot</p>
+        <p><strong>Cloud &amp; DevOps:</strong> AWS, GCP, Docker, Kubernetes, Terraform</p>
+        <p><strong>Tools:</strong> Git, CI/CD, Tableau, TensorFlow</p>
+      </section>
+
+      <section id="ns-projects">
+        <h2>Projects</h2>
+        <p>See my work at <a href="https://github.com/ranpearl" target="_blank" rel="noopener noreferrer">github.com/ranpearl</a>.</p>
+      </section>
+
+      <section id="ns-edu">
+        <h2>Education &amp; Honors</h2>
+        <p>[Education details — update in js/main.js → CONTENT.education]</p>
+      </section>
+
+      <section id="ns-contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:ran@example.com">ran@example.com</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/ranpearl" target="_blank" rel="noopener noreferrer">linkedin.com/in/ranpearl</a></p>
+        <p>GitHub: <a href="https://github.com/ranpearl" target="_blank" rel="noopener noreferrer">github.com/ranpearl</a></p>
+      </section>
+    </div>
+  </noscript>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
