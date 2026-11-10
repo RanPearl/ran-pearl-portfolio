@@ -1,123 +1,163 @@
-const root = document.documentElement;
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon = document.getElementById('themeIcon');
-const themeLabel = document.querySelector('.theme-label');
+const $ = (selector, root=document) => root.querySelector(selector);
+const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
 
-function applyTheme(theme) {
-  root.dataset.theme = theme;
-  const dark = theme === 'dark';
-  themeIcon.textContent = dark ? '☀' : '☾';
-  themeLabel.textContent = dark ? 'Light mode' : 'Dark mode';
-  themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
-  try { localStorage.setItem('ranPearlTheme', theme); } catch (error) {}
-}
-let savedTheme = 'light';
-try { savedTheme = localStorage.getItem('ranPearlTheme') || 'light'; } catch (error) {}
-applyTheme(savedTheme);
-themeToggle.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+const themeToggle = $('#themeToggle');
+const savedTheme = localStorage.getItem('ranpearl-theme');
+if (savedTheme === 'night') document.documentElement.dataset.theme = 'night';
+themeToggle.textContent = document.documentElement.dataset.theme === 'night' ? '☀' : '☾';
+themeToggle.addEventListener('click', () => {
+  const night = document.documentElement.dataset.theme !== 'night';
+  if (night) document.documentElement.dataset.theme = 'night';
+  else delete document.documentElement.dataset.theme;
+  localStorage.setItem('ranpearl-theme', night ? 'night' : 'day');
+  themeToggle.textContent = night ? '☀' : '☾';
+  showToast(night ? 'Night theme enabled' : 'Pink day theme enabled');
+});
 
-// Mobile navigation
-const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.getElementById('navLinks');
+const menuToggle = $('#menuToggle');
+const navLinks = $('#navLinks');
 menuToggle.addEventListener('click', () => {
   const open = navLinks.classList.toggle('open');
   menuToggle.setAttribute('aria-expanded', String(open));
   menuToggle.textContent = open ? '×' : '☰';
 });
-navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-  navLinks.classList.remove('open'); menuToggle.setAttribute('aria-expanded', 'false'); menuToggle.textContent = '☰';
+$$('.nav-links a').forEach(link => link.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.textContent = '☰';
 }));
 
-// Rotating role text
-const roleElement = document.getElementById('changingRole');
-const roles = ['Computer Science Student', 'OJT Applicant', 'Future Developer', 'Curious Learner'];
+const roles = ['Computer Science Student', 'OJT Applicant', 'Curious Problem Solver'];
 let roleIndex = 0;
+const typedRole = $('#typedRole');
 setInterval(() => {
   roleIndex = (roleIndex + 1) % roles.length;
-  roleElement.animate([{opacity:0, transform:'translateY(5px)'},{opacity:1, transform:'translateY(0)'}], {duration:350});
-  roleElement.textContent = roles[roleIndex];
-}, 2600);
+  typedRole.animate([{opacity:1, transform:'translateY(0)'},{opacity:0,transform:'translateY(5px)'}],{duration:170,fill:'forwards'}).onfinish = () => {
+    typedRole.textContent = roles[roleIndex];
+    typedRole.animate([{opacity:0,transform:'translateY(-5px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,fill:'forwards'});
+  };
+}, 2800);
 
-// Scroll reveal
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
+$$('.filter-btn').forEach(btn => btn.addEventListener('click', () => {
+  $$('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filter = btn.dataset.filter;
+  $$('.project-card').forEach(card => {
+    card.classList.toggle('hidden', filter !== 'all' && card.dataset.category !== filter);
   });
-}, {threshold:0.12});
-document.querySelectorAll('.reveal').forEach(item => revealObserver.observe(item));
-
-// Reading progress and back-to-top
-const progress = document.getElementById('readingProgress');
-const backToTop = document.getElementById('backToTop');
-function updateScrollUI() {
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  progress.style.width = `${scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0}%`;
-  backToTop.classList.toggle('visible', window.scrollY > 450);
-}
-window.addEventListener('scroll', updateScrollUI, {passive:true});
-updateScrollUI();
-backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-
-// Certificate modal: click anywhere on a certificate card
-const modal = document.getElementById('certificateModal');
-const modalImage = document.getElementById('modalImage');
-const modalTitle = document.getElementById('modalTitle');
-const modalProvider = document.getElementById('modalProvider');
-const imageFallback = document.getElementById('imageFallback');
-const openCertificate = document.getElementById('openCertificate');
-function closeModal() {
-  modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
-  document.body.style.overflow = ''; modalImage.src = ''; openCertificate.href = '#';
-}
-document.querySelectorAll('.certificate-card').forEach(card => card.addEventListener('click', () => {
-  const imagePath = card.dataset.certificate;
-  modalTitle.textContent = card.dataset.title;
-  modalProvider.textContent = card.dataset.provider;
-  imageFallback.hidden = true;
-  modalImage.hidden = false;
-  modalImage.onerror = () => { modalImage.hidden = true; imageFallback.hidden = false; };
-  modalImage.onload = () => { modalImage.hidden = false; imageFallback.hidden = true; };
-  modalImage.src = imagePath;
-  openCertificate.href = imagePath;
-  modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
-  document.body.style.overflow = 'hidden';
 }));
-document.getElementById('modalClose').addEventListener('click', closeModal);
-modal.querySelectorAll('[data-close-modal]').forEach(item => item.addEventListener('click', closeModal));
-document.addEventListener('keydown', event => { if (event.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
-
-// Project category filters
-const filterButtons = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-const emptyFilter = document.getElementById('emptyFilter');
-filterButtons.forEach(button => button.addEventListener('click', () => {
-  filterButtons.forEach(item => item.classList.remove('active'));
-  button.classList.add('active');
-  const filter = button.dataset.filter;
-  let visibleCount = 0;
-  projectCards.forEach(card => {
-    const show = filter === 'all' || card.dataset.category === filter;
-    card.hidden = !show;
-    if (show) visibleCount++;
-  });
-  emptyFilter.hidden = visibleCount !== 0;
-}));
-
-// Expandable project details
- document.querySelectorAll('.expand-project').forEach(button => button.addEventListener('click', () => {
-  const card = button.closest('.project-card');
+$$('.details-toggle').forEach(btn => btn.addEventListener('click', () => {
+  const card = btn.closest('.project-card');
   const expanded = card.classList.toggle('expanded');
-  button.innerHTML = expanded ? 'Read less <span>－</span>' : 'Read more <span>＋</span>';
-  button.setAttribute('aria-expanded', String(expanded));
+  btn.setAttribute('aria-expanded', String(expanded));
+  btn.firstChild.textContent = expanded ? 'Hide details ' : 'More project details ';
+  btn.querySelector('span').textContent = expanded ? '−' : '＋';
 }));
 
-// Highlight the current navigation section
-const sections = document.querySelectorAll('main section[id]');
-const sectionObserver = new IntersectionObserver(entries => {
+const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      navLinks.querySelectorAll('a').forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
     }
   });
-}, {rootMargin:'-35% 0px -55% 0px'});
-sections.forEach(section => sectionObserver.observe(section));
+},{threshold:.12});
+$$('.section-block, .resume-callout, .project-card, .skill-card, .cert-card').forEach(el => {
+  el.classList.add('reveal');
+  observer.observe(el);
+});
+
+const sections = $$('main section[id]');
+const navObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      $$('.nav-links a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${entry.target.id}`));
+    }
+  });
+},{rootMargin:'-35% 0px -55% 0px'});
+sections.forEach(section => navObserver.observe(section));
+
+const toast = $('#toast');
+let toastTimeout;
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => toast.classList.remove('show'), 1900);
+}
+
+
+// Certificate cards open a larger preview. Add the actual image files in assets/certificates.
+const certificateModal = $('#certificateModal');
+const certificatePreviewImage = $('#certificatePreviewImage');
+const certificateMissing = $('#certificateMissing');
+const certificateModalTitle = $('#certificateModalTitle');
+let lastCertificateTrigger = null;
+
+function openCertificate(card) {
+  const imagePath = card.dataset.certificate;
+  const title = card.dataset.certTitle || 'Certificate';
+  lastCertificateTrigger = card;
+  certificateModalTitle.textContent = title;
+  certificateMissing.hidden = true;
+  certificatePreviewImage.hidden = false;
+  certificatePreviewImage.alt = `${title} certificate`;
+  certificatePreviewImage.src = imagePath;
+  certificatePreviewImage.onerror = () => {
+    certificatePreviewImage.hidden = true;
+    certificateMissing.hidden = false;
+  };
+  certificateModal.classList.add('open');
+  certificateModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+  $('[data-close-certificate]', certificateModal).focus?.();
+}
+function closeCertificate() {
+  certificateModal.classList.remove('open');
+  certificateModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+  certificatePreviewImage.removeAttribute('src');
+  if (lastCertificateTrigger) lastCertificateTrigger.focus();
+}
+$$('.cert-clickable').forEach(card => {
+  card.addEventListener('click', () => openCertificate(card));
+  card.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openCertificate(card);
+    }
+  });
+});
+$$('[data-close-certificate]').forEach(button => button.addEventListener('click', closeCertificate));
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && certificateModal.classList.contains('open')) closeCertificate();
+});
+
+// Reading progress and back-to-top button.
+const readingProgress = $('#readingProgress');
+const backToTop = $('#backToTop');
+function updateScrollControls() {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  readingProgress.style.width = `${progress}%`;
+  backToTop.classList.toggle('visible', window.scrollY > 450);
+}
+window.addEventListener('scroll', updateScrollControls, { passive: true });
+updateScrollControls();
+backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// A small greeting when the decorative cat is clicked.
+const heroCat = $('.pixel-cat');
+if (heroCat) {
+  heroCat.setAttribute('role', 'button');
+  heroCat.setAttribute('tabindex', '0');
+  heroCat.setAttribute('aria-label', 'Say hello to the portfolio cat');
+  const greetCat = () => showToast('Meow! Thanks for visiting ♥');
+  heroCat.addEventListener('click', greetCat);
+  heroCat.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      greetCat();
+    }
+  });
+}
