@@ -27,7 +27,7 @@ $$('.nav-links a').forEach(link => link.addEventListener('click', () => {
   menuToggle.textContent = '☰';
 }));
 
-const roles = ['Computer Science Student', 'OJT Applicant', 'Curious Problem Solver'];
+const roles = ['Computer Science Student', 'OJT Applicant', 'Problem Solver'];
 let roleIndex = 0;
 const typedRole = $('#typedRole');
 setInterval(() => {
