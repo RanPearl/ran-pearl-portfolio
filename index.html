@@ -3,195 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- SEO -->
-  <title>RanOS 96 — Ran Pearl's Portfolio</title>
-  <meta name="description" content="Ran Pearl's personal portfolio, designed as a playful retro desktop operating system called RanOS 96. Explore projects, skills, certifications, and more." />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="RanOS 96 — Ran Pearl's Portfolio" />
-  <meta property="og:description" content="A retro late-1990s OS-style portfolio featuring projects, skills, certifications, and adorable desktop cats." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/og-preview.png" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="description" content="Ran Pearl P. Diocena - Computer Science Student and OJT Applicant Portfolio" />
+  <title>Ran Pearl P. Diocena | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <div class="reading-progress" id="readingProgress"></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Ran Pearl home"><span class="brand-mark">rp.</span><span>RAN PEARL</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a><a href="#certifications">Certifications</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#resume">Resume</a><a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode" title="Switch theme"><span id="themeIcon">☾</span><span class="theme-label">Dark mode</span></button>
+  </header>
 
-  <!-- ═══════════════════════════════════
-       BOOT SCREEN
-  ═══════════════════════════════════ -->
-  <div id="boot-screen" role="dialog" aria-label="RanOS 96 Boot Screen" aria-modal="true">
-    <div class="boot-content">
-      <div class="boot-logo">
-        <div class="boot-logo-icon" aria-hidden="true">
-          <svg width="80" height="80" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="6" width="44" height="30" rx="2" fill="#C0C0C0" stroke="#808080"/>
-            <rect x="5" y="9" width="38" height="24" fill="#000080"/>
-            <rect x="20" y="36" width="8" height="5" fill="#A0A0A0"/>
-            <rect x="13" y="41" width="22" height="3" fill="#808080"/>
-            <text x="24" y="25" text-anchor="middle" font-family="monospace" font-size="9" fill="#00FF41">RanOS</text>
-            <text x="24" y="31" text-anchor="middle" font-family="monospace" font-size="7" fill="#808080">96</text>
-          </svg>
-        </div>
-        <h1 class="boot-title">RanOS 96</h1>
-        <p class="boot-subtitle">Personal Edition · Copyright © 2024 Ran Pearl</p>
+  <main>
+    <section class="hero section-shell" id="home">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="status-dot"></span> OPEN TO OJT OPPORTUNITIES · ILOILO CITY</p>
+        <h1>Hi, I'm <span class="pink-text">Ran Pearl.</span><br><span class="role-line">A <span id="changingRole">Computer Science Student</span><span class="cursor">_</span></span></h1>
+        <p class="hero-description">I’m a fourth-year Computer Science student who enjoys learning how technology works and finding ways to use it to solve problems. I’m ready to learn, contribute, and gain real-world experience.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#projects">Explore my work <span>↗</span></a><a class="button button-outline" href="#contact">Let's connect</a></div>
+        <div class="hero-meta"><span>BASED IN THE PHILIPPINES</span><span>BS COMPUTER SCIENCE · 2027</span></div>
       </div>
-      <div class="boot-progress-wrap">
-        <div class="boot-progress-container"
-             role="progressbar"
-             aria-valuemin="0"
-             aria-valuemax="100"
-             aria-valuenow="0"
-             id="boot-progress-bar">
-          <div class="boot-progress-fill" id="boot-progress-fill"></div>
+      <div class="hero-art reveal">
+        <div class="hero-window">
+          <div class="window-bar"><span></span><span></span><span></span><small>ran-pearl.exe</small></div>
+          <div class="hero-window-content">
+            <div class="pixel-cat" aria-label="Pixel art cat" role="img"><span class="cat-ear left"></span><span class="cat-ear right"></span><span class="cat-face"><i class="eye eye-left"></i><i class="eye eye-right"></i><i class="nose"></i><i class="whisker w1"></i><i class="whisker w2"></i></span></div>
+            <p class="cat-caption">just a curious cat<br>learning new things ♡</p>
+            <div class="terminal-line"><span>guest@ranpearl:~$</span> hello_world()</div>
+            <div class="terminal-output">Hello! Thanks for visiting my portfolio.</div>
+          </div>
         </div>
+        <span class="floating-star star-one">✳</span><span class="floating-star star-two">✦</span><span class="floating-heart">♡</span>
+        <div class="sticker">MADE WITH<br>CARE & CURIOSITY</div>
       </div>
-      <p class="boot-status" id="boot-status" aria-live="polite">Starting RanOS 96…</p>
-      <button class="boot-skip" id="boot-skip">Skip ▶</button>
-    </div>
-  </div>
+    </section>
 
-  <!-- ═══════════════════════════════════
-       DESKTOP
-  ═══════════════════════════════════ -->
-  <div id="desktop" aria-label="RanOS 96 Desktop">
-
-    <!-- Desktop Icons -->
-    <main id="icon-grid" aria-label="Desktop icons" role="list"></main>
-
-    <!-- Windows Container -->
-    <div id="windows-container" aria-label="Application windows"></div>
-
-    <!-- Cats -->
-    <div id="cats-container" aria-hidden="true"></div>
-
-    <!-- ─── TASKBAR ─── -->
-    <footer id="taskbar" role="toolbar" aria-label="Taskbar">
-
-      <!-- Start button -->
-      <button class="start-btn"
-              id="start-btn"
-              aria-haspopup="true"
-              aria-expanded="false"
-              aria-controls="start-menu">
-        <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="2" y="6" width="44" height="30" rx="2" fill="#C0C0C0" stroke="#808080"/>
-          <rect x="5" y="9" width="38" height="24" fill="#000080"/>
-          <rect x="20" y="36" width="8" height="5" fill="#A0A0A0"/>
-          <rect x="13" y="41" width="22" height="3" fill="#808080"/>
-        </svg>
-        <span>Start</span>
-      </button>
-
-      <!-- Start Menu (shown above taskbar) -->
-      <nav id="start-menu"
-           role="menu"
-           aria-label="Start Menu"
-           hidden></nav>
-
-      <!-- Separator -->
-      <div class="taskbar-sep" aria-hidden="true"></div>
-
-      <!-- Open windows list -->
-      <div id="taskbar-windows" role="list" aria-label="Open windows" class="taskbar-windows"></div>
-
-      <!-- Right cluster: mute + clock -->
-      <div class="taskbar-right">
-        <button id="mute-btn"
-                class="taskbar-tray-btn"
-                aria-label="Sound muted — click to unmute"
-                aria-pressed="true"
-                title="Toggle sound">🔇</button>
-        <div class="taskbar-clock" id="taskbar-clock" role="timer" aria-label="Current time">
-          <span id="clock-time">12:00 AM</span>
-        </div>
+    <section class="section-shell section-block" id="about">
+      <div class="section-heading"><span>01 / ABOUT ME</span><span class="heading-rule"></span><span class="section-note">A LITTLE INTRODUCTION</span></div>
+      <div class="about-grid">
+        <div class="about-title reveal"><h2>Curious mind.<br><span class="pink-text">Growing skills.</span></h2><p class="mono-note">// always learning, always improving</p></div>
+        <div class="about-copy reveal"><p>I am a fourth-year BS Computer Science student at the University of San Agustin. I have training in Python programming, SQL data analysis, networking fundamentals, cybersecurity awareness, cloud computing, and modern AI concepts.</p><p>I am currently looking for an OJT opportunity where I can apply what I have learned, improve my technical skills, and gain experience working with a professional team. I am also willing to learn new tools and take on new challenges.</p><div class="mini-facts"><span>♡ Cat lover</span><span>♡ K-drama watcher</span><span>♡ Always curious</span></div></div>
       </div>
+    </section>
 
-    </footer><!-- /taskbar -->
-  </div><!-- /desktop -->
+    <section class="section-shell section-block" id="certifications">
+      <div class="section-heading"><span>02 / CERTIFICATIONS</span><span class="heading-rule"></span><span class="section-note">CONTINUOUS LEARNING</span></div>
+      <div class="section-title-row"><h2>Learning <span class="pink-text">milestones.</span></h2><p class="click-hint">↗ Click on any certificate card to view the certificate.</p></div>
+      <div class="certificate-grid">
+        <button class="certificate-card reveal" data-certificate="assets/certificates/cisco-python-essentials-1.jpg" data-title="Cisco Python Essentials 1" data-provider="Cisco Networking Academy"><span class="cert-icon">✿</span><span class="cert-provider">CISCO NETWORKING ACADEMY</span><strong>Cisco Python Essentials 1</strong><span class="cert-desc">Python fundamentals, variables, data types, control structures, functions, and modules.</span><span class="card-action">Click to view certificate ↗</span></button>
+        <button class="certificate-card reveal" data-certificate="assets/certificates/datacamp-sql-associate.jpg" data-title="SQL Associate" data-provider="DataCamp"><span class="cert-icon">⌘</span><span class="cert-provider">DATACAMP</span><strong>SQL Associate</strong><span class="cert-desc">Passed a practical exam involving data cleaning, table joins, and SQL analysis.</span><span class="card-action">Click to view certificate ↗</span></button>
+        <button class="certificate-card reveal" data-certificate="assets/certificates/cisco-networking-basics.jpg" data-title="Networking Basics" data-provider="Cisco Networking Academy"><span class="cert-icon">⌁</span><span class="cert-provider">CISCO NETWORKING ACADEMY</span><strong>Networking Basics</strong><span class="cert-desc">IP addressing, routing, network protocols, devices, and network services.</span><span class="card-action">Click to view certificate ↗</span></button>
+        <button class="certificate-card reveal" data-certificate="assets/certificates/cisco-intro-cybersecurity.jpg" data-title="Introduction to Cybersecurity" data-provider="Cisco Networking Academy"><span class="cert-icon">♡</span><span class="cert-provider">CISCO NETWORKING ACADEMY</span><strong>Introduction to Cybersecurity</strong><span class="cert-desc">Common cyber threats, online safety, and ways to protect accounts and data.</span><span class="card-action">Click to view certificate ↗</span></button>
+        <button class="certificate-card reveal" data-certificate="assets/certificates/simplilearn-cloud-computing.jpg" data-title="Introduction to Cloud Computing" data-provider="Simplilearn"><span class="cert-icon">☁</span><span class="cert-provider">SIMPLILEARN</span><strong>Introduction to Cloud Computing</strong><span class="cert-desc">Core concepts and basic understanding of cloud computing.</span><span class="card-action">Click to view certificate ↗</span></button>
+        <button class="certificate-card reveal" data-certificate="assets/certificates/cisco-modern-ai.jpg" data-title="Introduction to Modern AI" data-provider="Cisco Networking Academy"><span class="cert-icon">✧</span><span class="cert-provider">CISCO NETWORKING ACADEMY</span><strong>Introduction to Modern AI</strong><span class="cert-desc">Foundational concepts and applications of modern artificial intelligence.</span><span class="card-action">Click to view certificate ↗</span></button>
+      </div>
+    </section>
 
-  <!-- ═══════════════════════════════════
-       NO-JS FALLBACK  (SEO + accessibility)
-  ═══════════════════════════════════ -->
-  <noscript>
-    <div class="noscript-fallback">
-      <h1>Ran Pearl — Portfolio</h1>
-      <p><em>Enable JavaScript for the full RanOS 96 interactive experience.</em></p>
+    <section class="section-shell section-block" id="skills">
+      <div class="section-heading"><span>03 / TECHNICAL SKILLS</span><span class="heading-rule"></span><span class="section-note">TOOLS IN MY TOOLKIT</span></div>
+      <h2>Things I can <span class="pink-text">work with.</span></h2>
+      <div class="skills-grid">
+        <article class="skill-card reveal"><span>01</span><h3>Programming</h3><p>Python</p><div class="skill-tags"><i>Logic</i><i>Functions</i></div></article>
+        <article class="skill-card reveal"><span>02</span><h3>Databases & Data</h3><p>SQL, data cleaning, table joins, data analysis</p><div class="skill-tags"><i>Queries</i><i>Analysis</i></div></article>
+        <article class="skill-card reveal"><span>03</span><h3>Networking</h3><p>IP addressing, routing, network protocols</p><div class="skill-tags"><i>IPv4 / IPv6</i><i>Protocols</i></div></article>
+        <article class="skill-card reveal"><span>04</span><h3>Security & Emerging Tech</h3><p>Cybersecurity fundamentals, cloud computing, modern AI</p><div class="skill-tags"><i>Security</i><i>Cloud</i><i>AI</i></div></article>
+        <article class="skill-card reveal"><span>05</span><h3>Tools</h3><p>Git, GitHub, Visual Studio Code</p><div class="skill-tags"><i>Version control</i><i>Editor</i></div></article>
+        <article class="skill-card reveal"><span>06</span><h3>Research & Documentation</h3><p>Technical writing, literature review, research methodology</p><div class="skill-tags"><i>Research</i><i>Writing</i></div></article>
+      </div>
+    </section>
 
-      <nav aria-label="Sections">
-        <a href="#ns-about">About</a> |
-        <a href="#ns-certs">Certifications</a> |
-        <a href="#ns-skills">Skills</a> |
-        <a href="#ns-projects">Projects</a> |
-        <a href="#ns-edu">Education &amp; Honors</a> |
-        <a href="#ns-contact">Contact</a>
-      </nav>
+    <section class="section-shell section-block" id="projects">
+      <div class="section-heading"><span>04 / SELECTED PROJECTS</span><span class="heading-rule"></span><span class="section-note">SCHOOL & TEAM WORK</span></div>
+      <div class="section-title-row"><h2>Projects & <span class="pink-text">experience.</span></h2><div class="filter-controls" role="group" aria-label="Filter projects"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="research">Research</button><button class="filter-btn" data-filter="development">Development</button></div></div>
+      <div class="project-list">
+        <article class="project-card reveal" data-category="research"><div class="project-number">01</div><div class="project-main"><div class="project-meta"><span>UNDERGRADUATE THESIS</span><span>2026 – PRESENT</span></div><h3>Offline Mobile Application for Real-Time Filipino Sign Language (FSL) Translation</h3><p class="project-summary">A team project developing an offline Android application that recognizes 130 Filipino Sign Language gestures and translates them into text and speech in real time.</p><div class="project-extra"><p>My contribution focuses on research and documentation. I help prepare the research content and written thesis proposal as part of a five-member team.</p><p class="tech-line">MediaPipe Holistic · BiLSTM with Attention · TensorFlow Lite · Android</p></div><button class="expand-project">Read more <span>＋</span></button></div><span class="project-stamp">IN<br>PROGRESS</span></article>
+        <article class="project-card reveal" data-category="development"><div class="project-number">02</div><div class="project-main"><div class="project-meta"><span>CISCO DEVASC SOCIAL CODING ACTIVITY</span><span>2026</span></div><h3>IPv4/IPv6 Address Retrieval App</h3><p class="project-summary">Worked with a three-member team to build an application that retrieves a user's IPv4 and IPv6 addresses through a REST API.</p><div class="project-extra"><p>The activity provided practice working with API responses and collaborating on a small application.</p><p class="tech-line">REST API · IP Addressing · Team Collaboration</p></div><button class="expand-project">Read more <span>＋</span></button></div><span class="project-stamp">TEAM<br>PROJECT</span></article>
+        <article class="project-card reveal" data-category="development"><div class="project-number">03</div><div class="project-main"><div class="project-meta"><span>ACADEMIC GROUP PROJECT</span><span>2025 – 2026</span></div><h3>Smart Peer Tutoring System</h3><p class="project-summary">A system designed to connect students with peers who can provide academic assistance and support collaborative learning.</p><div class="project-extra"><p>I was part of the documentation team and helped prepare project documentation while applying software development concepts.</p><p class="tech-line">System Documentation · Academic Support · Collaboration</p></div><button class="expand-project">Read more <span>＋</span></button></div><span class="project-stamp">ACADEMIC<br>PROJECT</span></article>
+      </div>
+      <p class="empty-filter" id="emptyFilter" hidden>No projects in this category yet.</p>
+    </section>
 
-      <section id="ns-about">
-        <h2>About Me</h2>
-        <p>Hi! I'm Ran Pearl — a software engineer passionate about building thoughtful, well-crafted digital experiences. [Update in js/main.js → CONTENT.about.bio]</p>
-      </section>
+    <section class="section-shell section-block" id="education">
+      <div class="section-heading"><span>05 / EDUCATION</span><span class="heading-rule"></span><span class="section-note">MY ACADEMIC JOURNEY</span></div>
+      <div class="education-item reveal"><div class="education-year">2023 – 2027</div><div><h3>Bachelor of Science in Computer Science</h3><p>University of San Agustin · Iloilo City</p><span class="education-detail">Currently in fourth year</span></div><span class="education-icon">♡</span></div>
+      <div class="education-item reveal"><div class="education-year">Senior High</div><div><h3>Science, Technology, Engineering, and Mathematics (STEM)</h3><p>Iloilo City National High School</p><span class="education-detail">With Honors · Grade 11, 1st and 2nd Semester<br>With Honors · Grade 12, 1st Semester<br>With High Honors · Grade 12, 2nd Semester</span></div><span class="education-icon">✿</span></div>
+    </section>
 
-      <section id="ns-certs">
-        <h2>Certifications</h2>
-        <ul>
-          <li>AWS Certified Solutions Architect — Associate
-            [<a href="#" target="_blank" rel="noopener noreferrer">View Certificate</a>]
-          </li>
-          <li>Google Cloud Professional Cloud Architect
-            [<a href="#" target="_blank" rel="noopener noreferrer">View Certificate</a>]
-          </li>
-          <li>Microsoft Azure Fundamentals (AZ-900)
-            [<a href="#" target="_blank" rel="noopener noreferrer">View Certificate</a>]
-          </li>
-          <li>Certified Kubernetes Administrator (CKA)
-            [<a href="#" target="_blank" rel="noopener noreferrer">View Certificate</a>]
-          </li>
-          <li>Tableau Desktop Specialist
-            [<a href="#" target="_blank" rel="noopener noreferrer">View Certificate</a>]
-          </li>
-          <li>TensorFlow Developer Certificate
-            [<a href="#" target="_blank" rel="noopener noreferrer">View Certificate</a>]
-          </li>
-        </ul>
-      </section>
+    <section class="section-shell section-block resume-section" id="resume">
+      <div class="section-heading"><span>06 / MY RESUME</span><span class="heading-rule"></span><span class="section-note">DOWNLOAD A COPY</span></div>
+      <div class="resume-panel reveal"><div><p class="eyebrow">WANT TO KNOW MORE?</p><h2>My resume, <span class="pink-text">one click away.</span></h2><p>Download my resume to see my education, certifications, skills, and project experience.</p></div><a class="button button-primary download-button" href="assets/resume.pdf" download>Download Resume <span>↓</span></a><span class="resume-decoration">PDF<br>♡</span></div>
+    </section>
 
-      <section id="ns-skills">
-        <h2>Skills</h2>
-        <p><strong>Languages:</strong> Python, JavaScript, TypeScript, SQL, Java</p>
-        <p><strong>Frameworks:</strong> React, Node.js, FastAPI, Spring Boot</p>
-        <p><strong>Cloud &amp; DevOps:</strong> AWS, GCP, Docker, Kubernetes, Terraform</p>
-        <p><strong>Tools:</strong> Git, CI/CD, Tableau, TensorFlow</p>
-      </section>
+    <section class="section-shell section-block contact-section" id="contact">
+      <div class="section-heading"><span>07 / CONTACT</span><span class="heading-rule"></span><span class="section-note">LET'S TALK</span></div>
+      <div class="contact-grid"><div class="contact-copy reveal"><h2>Have an opportunity<br>or just want to <span class="pink-text">say hello?</span></h2><p>I would be happy to connect. Feel free to reach out through my email or GitHub.</p><span class="contact-cat">ฅ^•ﻌ•^ฅ</span></div><div class="contact-links reveal"><a href="mailto:rdiocena@usa.edu.ph"><span class="contact-label">EMAIL</span><strong>rdiocena@usa.edu.ph</strong><span class="contact-arrow">↗</span></a><a href="https://github.com/RanPearl" target="_blank" rel="noopener noreferrer"><span class="contact-label">GITHUB</span><strong>github.com/RanPearl</strong><span class="contact-arrow">↗</span></a></div></div>
+    </section>
+  </main>
 
-      <section id="ns-projects">
-        <h2>Projects</h2>
-        <p>See my work at <a href="https://github.com/ranpearl" target="_blank" rel="noopener noreferrer">github.com/ranpearl</a>.</p>
-      </section>
+  <footer class="site-footer"><a class="brand" href="#home"><span class="brand-mark">rp.</span><span>RAN PEARL</span></a><span>© 2026 Ran Pearl P. Diocena. Made with care ♡</span><a href="#home" class="footer-top">BACK TO TOP ↑</a></footer>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
-      <section id="ns-edu">
-        <h2>Education &amp; Honors</h2>
-        <p>[Education details — update in js/main.js → CONTENT.education]</p>
-      </section>
-
-      <section id="ns-contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:ran@example.com">ran@example.com</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/ranpearl" target="_blank" rel="noopener noreferrer">linkedin.com/in/ranpearl</a></p>
-        <p>GitHub: <a href="https://github.com/ranpearl" target="_blank" rel="noopener noreferrer">github.com/ranpearl</a></p>
-      </section>
-    </div>
-  </noscript>
-
-  <script src="js/main.js"></script>
+  <div class="modal" id="certificateModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-backdrop" data-close-modal></div><div class="modal-content"><button class="modal-close" id="modalClose" aria-label="Close certificate">×</button><p class="modal-provider" id="modalProvider"></p><h2 id="modalTitle">Certificate</h2><div class="certificate-image-wrap"><img id="modalImage" src="" alt="Selected certificate"><p id="imageFallback" hidden>Add the certificate image to the assets/certificates folder using the filename shown in README.md.</p></div><a id="openCertificate" class="modal-open-link" href="#" target="_blank" rel="noopener noreferrer">Open image in new tab ↗</a></div></div>
 </body>
 </html>
